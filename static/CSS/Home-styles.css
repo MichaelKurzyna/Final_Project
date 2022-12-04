@@ -1,0 +1,25 @@
+body{
+    background-color: #0e1111;
+    padding-top : 50px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main{
+    flex-grow: 1;
+}
+
+.container-body{
+    background-color: #fa4454;
+}
+
+.footer{
+    background-color: #232b2b;
+    color: black;
+    height: 150px;
+}
+
+a{
+    text-decoration: none;
+}

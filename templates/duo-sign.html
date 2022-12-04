@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+    <!--  First Section -->
+    <div class="main my-3">
+        <div class="container container-body">
+            <div class="row text-center">
+                <h1>Sign up to find a duo partner!</h1>
+                <p>Here you can sign up with your valorant account name, rank, and your main agents to help you find a duo partner to climb the ranks with</p>
+            </div>
+        </div>
+        <!--  Form Section -->
+        <div class="container container-body">
+            <div class="row my-2 py-2">
+                <form action="{% url 'duosign' %}" method="post">
+                    {% csrf_token %}
+                    <h1>{{ form.player_name.label }}</h1>
+                    {{ form.player_name }}
+                    <h2>{{ form.player_rank.label }}:</h2>
+                    {% for radio in form.player_rank %}
+                            {% if forloop.counter0|divisibleby:3 %}
+                                <br>
+                            {% endif %}
+                            <span class="radio">{{ radio.tag }}</span>
+                            <label class="myradiolabel" for="{{ radio.id_for_label }}">
+                                <img id="{{ forloop.counter0 }}" class="rankimage" src="#" alt="Rank image">
+                            </label>
+                    {% endfor %}
+                    <h2>Your main agents:</h2>
+                    {% for radio1 in form.main_agents %}
+                        {% if forloop.counter0|divisibleby:3 %}
+                                <br>
+                            {% endif %}
+                        {% if forloop.first %}
+                            <span class="checkbox">{{ radio1.tag }}</span>
+                            <label for="{{ radio1.id_for_label }}">
+                                {{ radio1.choice_label  }}
+                            </label>
+
+                        {% else %}
+                            <span class="checkbox">{{ radio1.tag }}</span>
+                            <label for="{{ radio1.id_for_label }}">
+                                <img id="{{ forloop.counter0 }}" class="agentimage m-2 p-2" src="#" alt="Agent image">
+                            </label>
+                        {% endif %}
+                    {% endfor %}
+                    <button class="btn btn-primary d-block my-3" type="submit"><i class="fa-solid fa-floppy-disk"></i>
+                        Save
+                    </button>
+                {{ form.errors }}
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- My javascript -->
+    <script src="{% static 'JS/signup.js' %}"></script>
+{% endblock %}

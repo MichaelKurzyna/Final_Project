@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+    <!--  First Section -->
+    <div class="main my-3">
+        <div class="container container-body">
+            <div class="row text-center">
+                <h1>Welcome to Valorant Lobbies</h1>
+                <p>Here you can sign up with your valorant account name to either start a team or find a partner to help
+                    you climb the ranks</p>
+            </div>
+        </div>
+        <!--  Second Section -->
+        <div class="container container-body my-3">
+            <div class="row text-center">
+                <div class="col">
+                    <h1>If you don't have valorant yet visit their website and create an account now</h1>
+                    <a class="btn btn-primary" href="https://playvalorant.com/en-us/" role="button">Valorant Page</a>
+                </div>
+                <div class="col">
+                    <h1>Get up to date on the latest valorant news</h1>
+                    <img src="{% static '/Images/val-twitter.jpg' %}" alt="valorant twitter feed">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

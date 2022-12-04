@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+    <!--  First Section -->
+    <div class="main my-3">
+        <div class="container container-body">
+            <div class="row text-center">
+                <h1>Sign up your valorant account</h1>
+                <p>Here you can sign up with your valorant account name to either start a team or find a partner to help
+                    you climb the ranks</p>
+            </div>
+        </div>
+        <!--  Form Section -->
+        <div class="container container-body">
+            <div class="row my-2 py-2">
+                {% for player in list %}
+                <h1>Player name: {{ player.player_name }}</h1>
+                <h2>Player rank: {{ player.player_rank }}</h2>
+                <a class="mx-1" href="{% url 'deleteplayer' player.id %}">
+                <button class="btn btn-outline-danger"><i class="fa-solid fa-xmark"></i></button>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
