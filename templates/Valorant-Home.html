@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% block title %}
+    Homepage
+{% endblock %}
 {% block body %}
     <!--  First Section -->
     <div class="main my-3">
@@ -13,12 +15,12 @@
         </div>
         <!--  Second Section -->
         <div class="container container-body my-3">
-            <div class="row text-center">
-                <div class="col">
+            <div class="row">
+                <div class="col-md d-flex align-content-center justify-content-center flex-wrap">
                     <h1>If you don't have valorant yet visit their website and create an account now</h1>
-                    <a class="btn btn-primary" href="https://playvalorant.com/en-us/" role="button">Valorant Page</a>
+                    <a class="btn btn-primary text-center" href="https://playvalorant.com/en-us/" role="button">Valorant Page</a>
                 </div>
-                <div class="col">
+                <div class="col-md">
                     <h1>Get up to date on the latest valorant news</h1>
                     <img src="{% static '/Images/val-twitter.jpg' %}" alt="valorant twitter feed">
                 </div>

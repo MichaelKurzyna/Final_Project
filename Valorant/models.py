@@ -1,6 +1,5 @@
 from django.db import models
 
-
 RANKS = (
     ('IRON I', 'IRON1'),
     ('IRON II', 'IRON2'),
@@ -29,37 +28,14 @@ RANKS = (
     ('RADIANT', 'RADIANT')
 )
 
+
 class Player(models.Model):
     player_name = models.CharField(max_length=30)
     player_rank = models.CharField(max_length=30, choices=RANKS, blank=False, default='Unspecified')
 
 
 class Duo(models.Model):
-    AGENTS = (
-        ('No main', 'NONE'),
-        ('Brimstone', 'Brimstone'),
-        ('Pheonix', 'Pheonix'),
-        ('Sage', 'Sage'),
-        ('Sova', 'Sova'),
-        ('Viper', 'Viper'),
-        ('Cypher', 'Cypher'),
-        ('Reyna', 'Reyna'),
-        ('Killjoy', 'Killjoy'),
-        ('Breach', 'Breach'),
-        ('Omen', 'Omen'),
-        ('Jett', 'Jett'),
-        ('Raze', 'Raze'),
-        ('Skye', 'Skye'),
-        ('Yoru', 'Yoru'),
-        ('Astra', 'Astra'),
-        ('Kayo', 'Kayo'),
-        ('Chamber', 'Chamber'),
-        ('Neon', 'Neon'),
-        ('Fade', 'Fade'),
-        ('Harbor', 'Harbor')
-    )
     player_name = models.CharField(max_length=30)
     player_rank = models.CharField(max_length=30, choices=RANKS, blank=False, default='Unspecified')
     main_agents = models.CharField(max_length=300)
     players_signedup = models.CharField(max_length=1000, blank=True)
-
