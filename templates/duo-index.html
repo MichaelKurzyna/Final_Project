@@ -24,6 +24,7 @@
                                     <p class="card-text">Player rank: {{ duo.player_rank }}</p>
                                     <img id="{{ duo.player_rank }}" class="rank" src="#" alt="Rank Image">
                                     <p class="card-text">Main agents: <img id="{{ duo.main_agents }}" class="agents m-2 p-2" src="#" alt="."></p>
+                                    <p>User name: {{ duo.user_name }}</p>
                                     <a style="text-decoration: none" href="{% url 'duosign' %}">
                                         <button class="btn btn-success"><i class="fa-solid fa-plus"></i> Play
                                             with {{ duo.player_name }}!

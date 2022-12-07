@@ -15,6 +15,7 @@ def index(request):
     context = {'list': list}
     return render(request, 'index.html', context)
 
+
 @login_required(login_url='login')
 def duoindex(request):
     list = Duo.objects.all()
@@ -27,18 +28,22 @@ def playersign(request):
     form = PlayerForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
-            form.save()
+            complete_form = form.save(commit=False)
+            complete_form.user_name = request.user
+            complete_form.save()
             return redirect('home')
     context = {'form': form}
     return render(request, 'player-sign.html', context)
+
 
 @login_required(login_url='login')
 def duosign(request):
     form = DuoForm(request.POST or None)
     if request.method == 'POST':
-        print(form.errors)
         if form.is_valid():
-            form.save()
+            complete_form = form.save(commit=False)
+            complete_form.user_name = request.user
+            complete_form.save()
             return redirect('home')
     context = {'form': form}
     return render(request, 'duo-sign.html', context)
@@ -90,3 +95,11 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+
+@login_required(login_url='login')
+def yourduo(request):
+    user = request.user
+    account = Duo.objects.get(user_name=user)
+    context = {'account': account}
+    return render(request, 'your-duo.html', context)
