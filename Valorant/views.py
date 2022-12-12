@@ -17,9 +17,21 @@ def index(request):
 
 
 @login_required(login_url='login')
+def duopartner(request, id):
+    duo = Duo.objects.get(id=id)
+    this_user = request.user
+    player = Player.objects.get(user_name=this_user)
+    duo.players_signedup += player.player_name + ', '
+    duo.save()
+    return redirect('home')
+
+
+@login_required(login_url='login')
 def duoindex(request):
+    this_user = request.user
     list = Duo.objects.all()
-    context = {'list': list}
+    newlist = list.exclude(user_name=this_user)
+    context = {'list': newlist}
     return render(request, 'duo-index.html', context)
 
 

@@ -16,7 +16,7 @@
         <!--  Form Section -->
         <div class="container container-body">
             {% for duo in list %}
-                <div class="row row-cols-1 text-center g-4 my-2 py-2">
+                <div class="row row-cols-1 text-center g-4 my-2 pt-2 pb-4">
                         <div class="col-md">
                             <div class="card bg-dark text-primary">
                                 <div class="card-body">
@@ -25,13 +25,9 @@
                                     <img id="{{ duo.player_rank }}" class="rank" src="#" alt="Rank Image">
                                     <p class="card-text">Main agents: <img id="{{ duo.main_agents }}" class="agents m-2 p-2" src="#" alt="."></p>
                                     <p>User name: {{ duo.user_name }}</p>
-                                    <a style="text-decoration: none" href="{% url 'duosign' %}">
+                                    <a style="text-decoration: none" href="{% url 'partner' duo.id %}">
                                         <button class="btn btn-success"><i class="fa-solid fa-plus"></i> Play
                                             with {{ duo.player_name }}!
-                                        </button>
-                                    </a>
-                                    <a class="mx-1" href="{% url 'deleteduo' duo.id %}">
-                                        <button class="btn btn-outline-danger"><i class="fa-solid fa-xmark"></i>
                                         </button>
                                     </a>
                                 </div>

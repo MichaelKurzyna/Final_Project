@@ -191,7 +191,10 @@ $(document).ready(function () {
         let arrayLength = agentArray.length;
         //create array with list of agents to produce images equal to number of agents selected
         if (arrayLength === 1){
-            let foundagent = agents.find(agent => agent.name === agentArray[0]);
+            let thisagent = agentArray[0].slice(1);
+            thisagent = thisagent.slice(1,-1);
+            thisagent = thisagent.slice(0,-1);
+            let foundagent = agents.find(agent => agent.name === thisagent);
             let number = foundagent.num;
             $(this).attr('src', agentsimages[number]);
         }

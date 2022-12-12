@@ -9,12 +9,12 @@
         <div class="container container-body">
             <div class="row text-center">
                 <h1>This is your duo page</h1>
-                <p>Here you can view who signed up to play with you and you can add their valorant name in game to play!</p>
+                <p>Here you can view who signed up to play with you, then just add their valorant name in game to play!</p>
             </div>
         </div>
         <!--  Form Section -->
         <div class="container container-body">
-                <div class="row row-cols-1 text-center g-4 my-2 py-2">
+                <div class="row row-cols-1 text-center g-4 my-2 pt-2 pb-4">
                         <div class="col-md">
                             <div class="card bg-dark text-primary">
                                 <div class="card-body">
@@ -22,7 +22,7 @@
                                     <p class="card-text">Player rank: {{ account.player_rank }}</p>
                                     <img id="{{ account.player_rank }}" class="rank" src="#" alt="Rank Image">
                                     <p class="card-text">Main agents: <img id="{{ account.main_agents }}" class="agents m-2 p-2" src="#" alt="."></p>
-                                    <p>Who signed up: {{ account.players_signedup }}</p>
+                                    <p>Who signed up: {{ account.players_signedup|slice:":-2" }}</p>
                                     <a class="mx-1" href="{% url 'deleteduo' account.id %}">
                                         <button class="btn btn-outline-danger"><i class="fa-solid fa-xmark"></i>
                                         </button>

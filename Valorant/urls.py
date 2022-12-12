@@ -7,6 +7,7 @@ urlpatterns = [
     path('index/duo', views.duoindex, name="duoindex"),
     path('signup/player', views.playersign, name="player"),
     path('signup/duo', views.duosign, name="duosign"),
+    path('partner/<int:id>', views.duopartner, name="partner"),
     path('deleteduo/<int:id>', views.deleteduo, name="deleteduo"),
     path('deleteplayer/<int:id>', views.deleteplayer, name="deleteplayer"),
     path('register/', views.register_view, name='register'),
