@@ -23,7 +23,7 @@
                                     <h5 class="card-title">Player name: {{ duo.player_name }}</h5>
                                     <p class="card-text">Player rank: {{ duo.player_rank }}</p>
                                     <img id="{{ duo.player_rank }}" class="rank" src="#" alt="Rank Image">
-                                    <p class="card-text py-2">Main agents: <img id="{{ duo.main_agents }}" class="agents m-2 p-2" src="#" alt="."></p>
+                                    <p id="{{ forloop.counter0 }}" class="card-text py-2">Main agents: <img id="{{ duo.main_agents }}" class="agents" src="#" alt="."></p>
                                     <a style="text-decoration: none" href="{% url 'partner' duo.id %}">
                                         <button class="btn btn-success"><i class="fa-solid fa-plus"></i> Play
                                             with {{ duo.player_name }}!

@@ -21,7 +21,7 @@
                                     <h5 class="card-title">Player name: {{ account.player_name }}</h5>
                                     <p class="card-text">Player rank: {{ account.player_rank }}</p>
                                     <img id="{{ account.player_rank }}" class="rank" src="#" alt="Rank Image">
-                                    <p class="card-text">Main agents: <img id="{{ account.main_agents }}" class="agents m-2 p-2" src="#" alt="."></p>
+                                    <p id="0" class="card-text">Main agents: <img id="{{ account.main_agents }}" class="agents" src="#" alt="."></p>
                                     <p>Who signed up: {{ account.players_signedup|slice:":-2" }}</p>
                                     <a class="mx-1" href="{% url 'deleteduo' account.id %}">
                                         <button class="btn btn-outline-danger"><i class="fa-solid fa-xmark"></i>
