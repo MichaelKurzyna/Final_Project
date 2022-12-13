@@ -42,3 +42,11 @@ class Duo(models.Model):
     player_rank = models.CharField(max_length=30, choices=RANKS, blank=False, default='Unspecified')
     main_agents = models.CharField(max_length=300)
     players_signedup = models.CharField(max_length=1000, blank=True)
+
+
+class Team(models.Model):
+    user_name = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    team_name = models.CharField(max_length=30)
+    player_name = models.CharField(max_length=30)
+    player_rank = models.CharField(max_length=30, choices=RANKS, blank=False, default='Unspecified')
+    players_signedup = models.CharField(max_length=1000, blank=True)

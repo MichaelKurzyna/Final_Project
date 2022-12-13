@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Duo Finder
+{% endblock %}
+{% block body %}
+    <!--  First Section -->
+    <div class="main my-3">
+        <div class="container container-body">
+            <div class="row text-center">
+
+                <h1>Pratice with other teams!</h1>
+                <p>Have the captain of your team sign up under another team you'd like to challenge</p>
+            </div>
+        </div>
+        <!--  Form Section -->
+        <div class="container container-body">
+            {% for team in list %}
+                <div class="row row-cols-1 text-center g-4 my-2 pt-2 pb-4">
+                    <div class="col-md">
+                        <div class="card bg-dark text-primary">
+                            <div class="card-body">
+                                <h5 class="card-title">Team name: {{ team.team_name }}</h5>
+                                <p class="card-text">Team captain: {{ team.player_name }}</p>
+                                <p class="card-text">Team rank: {{ team.player_rank }}</p>
+                                <img id="{{ team.player_rank }}" class="rank" src="#" alt="Rank Image">
+                                <p></p>
+                                <a style="text-decoration: none" href="{% url 'teampartner' team.id %}">
+                                    <button class="btn btn-success"><i class="fa-solid fa-plus"></i>
+                                        Challenge {{ team.team_name }}!
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- My javascript -->
+    <script src="{% static 'JS/duoindex.js' %}"></script>
+{% endblock %}

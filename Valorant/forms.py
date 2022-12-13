@@ -1,5 +1,5 @@
 from django import forms
-from .models import Player, Duo
+from .models import Player, Duo, Team
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -83,9 +83,31 @@ class DuoForm(forms.ModelForm):
         }
 
 
+class TeamForm(forms.ModelForm):
+    class Meta:
+        model = Team
+        fields = ('team_name', 'player_name', 'player_rank')
+        team_name = forms.CharField(max_length=30)
+        player_name = forms.CharField(max_length=30)
+        player_rank = forms.ChoiceField(choices=RANKS)
+
+        widgets = {
+            'team_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your Team name'}),
+            'player_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Enter your captain's name name"}),
+            'player_rank': forms.RadioSelect(choices=RANKS, attrs={'id': 'value'})
+        }
+
+
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True, label='Email')
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
+
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
+            'password1': forms.TextInput(attrs={'class': 'form-control'}),
+            'password2': forms.TextInput(attrs={'class': 'form-control'})
+        }

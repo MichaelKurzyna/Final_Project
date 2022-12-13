@@ -34,7 +34,7 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'player' %}">Player Signup</a></li>
                         <li><a class="dropdown-item" href="{% url 'duosign' %}">Duo Signup</a></li>
-                        <li><a class="dropdown-item" href="#">Team Signup</a></li>
+                        <li><a class="dropdown-item" href="{% url 'teamsign' %}">Team Signup</a></li>
                         <li>
                     </ul>
                 </li>
@@ -42,7 +42,7 @@
                     <a class="nav-link" href="{% url 'duoindex' %}">Duo Finder</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Team Battles</a>
+                    <a class="nav-link" href="{% url 'teamindex' %}">Team Battles</a>
                 </li>
                 {% if user.is_authenticated %}
 
@@ -50,7 +50,9 @@
                         <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#"
                            role="button" aria-expanded="false">{{ user.username }}</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'yourduo' %}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'yourduo' %}">Your duo page</a></li>
+                            <li>
+                            <li><a class="dropdown-item" href="{% url 'yourteam' %}">Your team page</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -67,12 +69,14 @@
         </div>
     </div>
 </nav>
+{% include 'messages.html' %}
 {% block body %}
 {% endblock %}
 <!--  Footer -->
 <div class="footer">
     <h1 class="text-center">Follow our pages for news</h1>
-    <p class="text-center"><a href="https://twitter.com/PlayVALORANT">Twitter</a> <a href="https://www.instagram.com/playvalorantofficial">Instagram</a>
+    <p class="text-center"><a href="https://twitter.com/PlayVALORANT">Twitter</a> <a
+            href="https://www.instagram.com/playvalorantofficial">Instagram</a>
         <a href="https://discord.com/invite/valorant">Discord</a></p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
@@ -82,6 +86,12 @@
     const images = ["{% static 'Images/Iron1_1_150x150.webp' %}", "{% static 'Images/Iron2.webp' %}", "{% static 'Images/Iron3.webp' %}", "{% static 'Images/Bronze1_1_150x150.webp' %}", "{% static 'Images/Bronze2.webp' %}", "{% static 'Images/Bronze3.webp' %}", "{% static 'Images/Silver1_150x150.webp' %}", "{% static 'Images/Silver2.webp' %}", "{% static 'Images/Silver3.webp' %}", "{% static 'Images/Gold1.webp' %}", "{% static 'Images/Gold2.webp' %}", "{% static 'Images/Gold3.webp' %}", "{% static 'Images/Platinum1_1_150x150.webp' %}", "{% static 'Images/Platinum2.webp' %}", "{% static 'Images/Platinum3.webp' %}", "{% static 'Images/Diamond1.webp' %}", "{% static 'Images/Diamond2.webp' %}", "{% static 'Images/Diamond3_1_150x150.webp' %}", "{% static 'Images/Ascendant1.webp' %}", "{% static 'Images/Ascendant2.webp' %}", "{% static 'Images/Ascendant3.webp' %}", "{% static 'Images/Immortal1.webp' %}", "{% static 'Images/Immortal2.webp' %}", "{% static 'Images/Immortal3.webp' %}", "{% static 'Images/Radiant_150x150.webp' %}"];
     const agentsimages = ["{% static 'Images/Brimstone.webp' %}", "{% static 'Images/Phoenix.webp' %}", "{% static 'Images/Sage.webp' %}", "{% static 'Images/Sova.webp' %}", "{% static 'Images/Viper.webp' %}", "{% static 'Images/Cypher.webp' %}", "{% static 'Images/Reyna.webp' %}", "{% static 'Images/Killjoy.webp' %}", "{% static 'Images/Breach.webp' %}", "{% static 'Images/Omen.webp' %}", "{% static 'Images/Jett.webp' %}", "{% static 'Images/Raze.webp' %}", "{% static 'Images/Skye.webp' %}", "{% static 'Images/Yoru.webp' %}", "{% static 'Images/Astra.webp' %}", "{% static 'Images/Kayo.webp' %}", "{% static 'Images/Chamber.webp' %}", "{% static 'Images/Neon.webp' %}", "{% static 'Images/Fade.webp' %}", "{% static 'Images/Harbor.webp' %}"];
 </script>
-
+<script>
+    setTimeout(function () {
+        if ($('#msg').length > 0) {
+            $('#msg').remove();
+        }
+    }, 3000)
+</script>
 </body>
 </html>
